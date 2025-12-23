@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sonali 💖</title>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+  height:100vh;
+  background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* FLOATING HEARTS */
+.heart-float{
+  position:absolute;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh) scale(0.5)}
+  to{transform:translateY(-10vh) scale(1.2)}
+}
+
+/* CARD */
+.card{
+  background:white;
+  width:94%;
+  max-width:440px;
+  padding:28px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.3);
+  animation:zoomIn 1.3s ease;
+  position:relative;
+}
+
+@keyframes zoomIn{
+  from{opacity:0; transform:scale(0.7)}
+  to{opacity:1; transform:scale(1)}
+}
+
+/* PHOTO */
+.photo{
+  width:190px;
+  height:250px;
+  margin:0 auto 14px;
+  border-radius:26px;
+  padding:5px;
+  background:linear-gradient(45deg,#ff6f91,#ff9671,#ffc75f,#f9f871);
+  animation:borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow{
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(360deg)}
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+/* TEXT */
+h1{
+  color:#ff4f81;
+  margin-bottom:8px;
+}
+
+.line{
+  font-size:16px;
+  color:#444;
+  margin:10px 0;
+  opacity:0;
+  animation:fadeUp 1s forwards;
+}
+
+.line:nth-child(3){animation-delay:1s}
+.line:nth-child(4){animation-delay:2s}
+.line:nth-child(5){animation-delay:3s}
+.line:nth-child(6){animation-delay:4s}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* HEART */
+.big-heart{
+  font-size:40px;
+  animation:pulse 1s infinite;
+  margin:8px 0;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.4)}
+}
+
+/* BUTTON */
+button{
+  margin-top:12px;
+  padding:11px 24px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4f81,#ff8c94);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* COMPLIMENT */
+#compliment{
+  margin-top:14px;
+  font-size:15px;
+  color:#333;
+  min-height:40px;
+}
+
+/* END */
+.end{
+  margin-top:18px;
+  font-size:14px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUTO MUSIC (BEST POSSIBLE) -->
+<audio id="music" loop>
+  <source src="m.m4a" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <div class="photo">
+    <img src="photo.jpg.jpg">
+  </div>
+
+  <h1>Hey Sonali 💖</h1>
+
+  <div class="line">Ei website mu khali tuma pain banichi dhana🌸</div>
+  <div class="line">Tume nija gote colour, au mora duniya re colourful hei jaye ✨</div>
+  <div class="line">Tuma hasa mora favourite sound 😊</div>
+  <div class="line">Aji bhi, kal bhi, always… tume special 💕</div>
+
+  <div class="big-heart">❤️</div>
+
+  <button onclick="newCompliment()">Tap for Smile 😊</button>
+
+  <div id="compliment"></div>
+
+  <div class="end">Always yours tama Deba 💞</div>
+</div>
+
+<script>
+/* MUSIC START ON FIRST NATURAL TOUCH */
+const music = document.getElementById("music");
+window.onload = () => music.play().catch(()=>{});
+document.addEventListener("click",()=>music.play(),{once:true});
+document.addEventListener("touchstart",()=>music.play(),{once:true});
+
+/* COMPLIMENTS */
+const compliments = [
+ "Tume bohut beautiful 💖",
+ "Tuma smile re pura din bright hei jaye ☀️",
+ "Mu lucky je tume mora life re achha ❤️",
+ "Tume mora peace, mora happiness 🌸",
+ "Ei duniya re tuma jaga alaga ✨",
+ "Tuma hasi sabuthu best feeling 😊"
+];
+
+function newCompliment(){
+  document.getElementById("compliment").innerText =
+    compliments[Math.floor(Math.random()*compliments.length)];
+}
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+  const h = document.createElement("div");
+  h.className="heart-float";
+  h.innerText="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+},700);
+</script>
+
+</body>
+</html>
