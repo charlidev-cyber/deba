@@ -1,0 +1,152 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.card{
+  background:white;
+  width:94%;
+  max-width:440px;
+  padding:28px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.3);
+  animation:zoomIn 1.2s ease;
+}
+
+@keyframes zoomIn{
+  from{opacity:0; transform:scale(0.75)}
+  to{opacity:1; transform:scale(1)}
+}
+
+.photo-outer{
+  width:190px;
+  height:250px;
+  margin:0 auto 16px;
+  padding:5px;
+  border-radius:26px;
+  background:linear-gradient(
+    45deg,
+    #ff6f91,
+    #ff9671,
+    #ffc75f,
+    #f9f871,
+    #845ec2
+  );
+  background-size:300% 300%;
+  animation:borderMove 5s ease infinite;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+@keyframes borderMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.photo-inner{
+  width:100%;
+  height:100%;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.photo-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+h1{
+  color:#ff4f81;
+  margin-bottom:8px;
+}
+
+.line{
+  font-size:16px;
+  color:#444;
+  margin:10px 0;
+  opacity:0;
+  animation:fadeUp 1s forwards;
+}
+
+.line:nth-child(3){animation-delay:1s}
+.line:nth-child(4){animation-delay:2s}
+.line:nth-child(5){animation-delay:3s}
+.line:nth-child(6){animation-delay:4s}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+.big-heart{
+  font-size:40px;
+  animation:pulse 1s infinite;
+  margin:8px 0;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.4)}
+}
+
+button{
+  margin-top:12px;
+  padding:11px 24px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4f81,#ff8c94);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+#compliment{
+  margin-top:14px;
+  font-size:15px;
+  color:#333;
+  min-height:40px;
+}
+
+.end{
+  margin-top:18px;
+  font-size:14px;
+  color:#777;
+}
+
+#fireworks{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:999;
+}
